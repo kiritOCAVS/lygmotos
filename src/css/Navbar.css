@@ -1,0 +1,20 @@
+.nav-container {
+    background-color: black;
+    padding: 2rem;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+}
+
+.a-nav {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}   
+
+.logoflash {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
