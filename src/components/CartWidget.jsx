@@ -1,8 +1,8 @@
-const CartWidget = () => {
+const CartWidget = ()=>{
     return (
         <div className="cart-widget">
             <span>🛒</span>
-            <span>3</span>
+            <span style={{ color: 'red' }}>3</span>
         </div>
     );
 };

@@ -1,18 +1,16 @@
-import './App.css'
+import './css/App.css'
 import Navbar from './components/Navbar'
-import CartWidget from './components/CartWidget'
-import ItemListContainer from './components/itemListContainer'
+import ItemListContainer from './components/ItemListContainer'
 
 function App() {
 
 return (
   <>
     <Navbar />
-    <CartWidget />
-    <ItemListContainer greeting="¡Bienvenido a LyG Motos!" />
+    <ItemListContainer saludo="¡Bienvenido a LyG Motos!" />
   </>
 )
 
 }
 
-export default App
+export default App;
