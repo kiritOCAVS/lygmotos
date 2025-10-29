@@ -1,9 +1,13 @@
+import { FaShoppingCart } from "react-icons/fa";
+import Badge from 'react-bootstrap/Badge';
+
 const CartWidget = ()=>{
     return (
-        <div className="cart-widget">
-            <span>🛒</span>
-            <span style={{ color: 'red' }}>3</span>
-        </div>
+        <>
+         <FaShoppingCart fontSize="1.7rem" />
+         <Badge pill bg="danger">0</Badge>
+        </>
     );
 };
+
 export default CartWidget;

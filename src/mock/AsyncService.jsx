@@ -14,7 +14,7 @@ const productos = [
         description: 'Cubierta de moto Pirelli Angel Scooter 120/70-12, ideal para ciudad y carretera.',
         stock: 10,
         price: 75000,
-        img:'../img/pirelli1207012.jpg',
+        img:'../img/pirelli207012.jpg',
         category: 'cubiertas'
     },
     {
@@ -46,6 +46,15 @@ export const getProductos = () => {
             } else {
                 resolve(productos)
             }
+        }, 2000)
+    })
+}
+
+export const getOneProduct = (id) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            let prod= productos.find( p => p.id === id)
+            resolve(prod)
         }, 2000)
     })
 }
