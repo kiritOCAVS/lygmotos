@@ -34,6 +34,42 @@ const productos = [
         price: 75000,
         img:'../img/irc909014.jpg',
         category: 'cubiertas'
+    },
+    {
+        id:'05',
+        name: 'Casco Vertigo V32 Vanguard',
+        description: 'Vertigo está diseñado para brindarte una experiencia inolvidable en cada uno de tus viajes. Sus cascos cuentan con una estructura compacta y que se adapta a la perfección, preservando al máximo tu seguridad y garantizando travesías cómodas y divertidas.',
+        stock: 10,
+        price: 63300,
+        img:'../img/vertigo.png',
+        category: 'cascos'
+    },
+    {
+        id:'06',
+        name: 'Casco Moto Rebatible Peels Urban Dynamic Doble Visor',
+        description: 'Además de ser extremadamente ligero, el modelo es extremadamente práctico para los motociclistas que no renuncian a la seguridad de un casco cerrado pero aman la practicidad de uno abierto. El casco está inyectado en termoplástico de alta absorción, lo que garantiza mucha seguridad en sus recorridos. El U-RB2 tiene decoración de calcas con barniz protector y pintura más resistente. Con un sistema de admisión de aire superior e inferior, el casco es ideal para uso urbano y en carretera.',
+        stock: 10,
+        price: 140000,
+        img:'../img/peels.png',
+        category: 'cascos'
+    },
+    {
+        id:'07',
+        name: 'Puños -manillares Honda Glh',
+        description: 'Puños de manillar Honda GLH, ideales para mejorar el agarre y la comodidad en la conducción.',
+        stock: 10,
+        price: 41800,
+        img:'../img/manillar1.png',
+        category: 'accesorios'
+    },
+    {
+        id:'08',
+        name: 'Guantes Térmicos Impermeables Táctil Moto Touch',
+        description: 'Guantes térmicos impermeables táctiles para moto, ideales para mantener tus manos calientes y secas en condiciones climáticas adversas.',
+        stock: 10,
+        price: 75000,
+        img:'../img/guantes1.png',
+        category: 'accesorios'
     }
 ]
 

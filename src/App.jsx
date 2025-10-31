@@ -7,17 +7,25 @@ import NavbarBS from './components/NavbarBS';
 import Item from './components/Item';
 import ItemDetail from './components/ItemDetail';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Error from './components/Error';
 
 function App() {
 
 return (
-  <>
+  <BrowserRouter>
     {/* <Navbar /> */}
     <NavbarBS />
-    <ItemDetailContainer />
-    {/* <ItemListContainer saludo="¡Bienvenido a LyG Motos!" /> */}
-    <ItemCount/>
-  </>
+    <Routes>
+      <Route path='/' element={<ItemListContainer saludo="¡Bienvenido a LyG Motos!" />} />
+      <Route path='/category/:type' element={<ItemListContainer saludo="Bienvenido a:" />} />
+      <Route path='/item/:id' element={<ItemDetailContainer />} />
+      <Route path='*' element={<Error />} />
+    </Routes>
+    {/* <ItemDetailContainer /> */}
+    {/* <ItemCount/> */}
+
+  </BrowserRouter>
 )
 
 }
