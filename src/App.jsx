@@ -20,6 +20,8 @@ return (
       <Route path='/' element={<ItemListContainer saludo="¡Bienvenido a LyG Motos!" />} />
       <Route path='/category/:type' element={<ItemListContainer saludo="Bienvenido a:" />} />
       <Route path='/item/:id' element={<ItemDetailContainer />} />
+      <Route path='/cart' element={<CartView />} />
+      <Route path='/checkout' element={<Checkout />} />
       <Route path='*' element={<Error />} />
     </Routes>
     {/* <ItemDetailContainer /> */}
