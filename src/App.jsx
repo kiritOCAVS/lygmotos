@@ -9,6 +9,8 @@ import ItemDetail from './components/ItemDetail';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Error from './components/Error';
+import CartView from './components/CartView';
+import CheckoutForm from './components/CheckoutForm';
 
 function App() {
 
@@ -21,7 +23,7 @@ return (
       <Route path='/category/:type' element={<ItemListContainer saludo="Bienvenido a:" />} />
       <Route path='/item/:id' element={<ItemDetailContainer />} />
       <Route path='/cart' element={<CartView />} />
-      <Route path='/checkout' element={<Checkout />} />
+      <Route path='/checkout' element={<CheckoutForm />} />
       <Route path='*' element={<Error />} />
     </Routes>
     {/* <ItemDetailContainer /> */}

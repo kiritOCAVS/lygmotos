@@ -1,5 +1,4 @@
-import { use, useEffect, useState } from 'react';
-import { getProductos } from '../mock/AsyncService';
+import { useEffect, useState } from 'react';
 import ItemList from './itemList';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs, where, query } from 'firebase/firestore';
@@ -9,16 +8,16 @@ const ItemListContainer = ( props ) => {
     const[data, setData]= useState([])
     const[loader, setLoader]= useState(false)
     const {type} = useParams()
-   // console.log(type)
 
     useEffect(() => {
         setLoader(true);
         const productCollection = type 
         ? query(collection(db, "productos"), where("category", "==", type)) 
         : collection(db, "productos");
+        
         getDocs(productCollection)
         .then((res) => {
-            console.log(res.docs);
+            //console.log(res.docs);
             const list = res.docs.map((doc) => {
                 return {
                     id: doc.id,
@@ -32,23 +31,9 @@ const ItemListContainer = ( props ) => {
         })
         .finally(() => setLoader(false));
     }, [type])
-
-    // useEffect(() => {
-    //    getProductos()
-     //   .then((res) => {
-    //        if(type){
-     //           setData(res.filter(prod => prod.category === type))
-     //       }else{
-     //           setData(res)
-     //       }
-     //  })
-    //  .catch((err) => console.log(err, 'error'))
-    //  }, [type])
-    
-    // console.log(data, 'estado')
     
     return (
-        <div>
+        <div className='container'>
             <h1 className="text-primary">
             {props.saludo}
             {type && (
@@ -58,9 +43,20 @@ const ItemListContainer = ( props ) => {
             </span>
          )}
             </h1>
-            {/*<h1 className="text-primary">{props.saludo}{type && <span> {type}</span>}</h1>
-            {/*data.map((prod, index) => <p key={index}>{prod.name}</p>)}*/}
-            <ItemList data={data} />
+            {loader ? (
+                <div className='text-center my-5'>
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Cargando...</span>
+                    </div>
+                    <p className='mt-2'>Cargando productos...</p>
+                </div>
+            ) : data.length === 0 ? (
+                <div className='alert alert-info my-4' role='alert'>
+                    <p className='mb-0'>No hay productos disponibles en esta categoría</p>
+                </div>
+            ) : (
+                <ItemList data={data} />
+            )}
         </div>
     )
 }

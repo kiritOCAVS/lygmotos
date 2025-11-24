@@ -13,9 +13,27 @@ function NavbarBS() {
              <img src= '../logoflash.jpg' alt="Logo" style={{ width: '3rem' }} />
             </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link as={NavLink} to="/category/cubiertas">Cubiertas</Nav.Link>
-            <Nav.Link as={NavLink} to="/category/cascos">Cascos</Nav.Link>
-            <Nav.Link as={NavLink} to="/category/accesorios">Accesorios</Nav.Link>
+            <Nav.Link 
+              as={NavLink} 
+              to="/category/cubiertas"
+              style={({isActive}) => isActive ? {fontWeight: 'bold', textDecoration: 'underline'} : {}}
+            >
+              Cubiertas
+            </Nav.Link>
+            <Nav.Link 
+              as={NavLink} 
+              to="/category/cascos"
+              style={({isActive}) => isActive ? {fontWeight: 'bold', textDecoration: 'underline'} : {}}
+            >
+              Cascos
+            </Nav.Link>
+            <Nav.Link 
+              as={NavLink} 
+              to="/category/accesorios"
+              style={({isActive}) => isActive ? {fontWeight: 'bold', textDecoration: 'underline'} : {}}
+            >
+              Accesorios
+            </Nav.Link>
           </Nav>
           <CartWidget />
         </Container>

@@ -9,61 +9,46 @@ const ItemDetailContainer = () => {
     const [detalle, setDetalle] = useState({})
     const { id } = useParams()
     const[cargando, setCargando]= useState(false)
-    const [invalidId, setInvalidId] = useState(false);
-    const [invalid, setInvalid]= useState(false);
-
-
-//FIREBASE
+    const [invalid, setInvalid]= useState(false)
 
     useEffect(()=>{
-
       setCargando(true)
-
-      //referencia de un documento
-
+      
       const docRef = doc(db, "productos",id)
-
-      //traer el documento
-
+      
       getDoc(docRef)
-
       .then((res)=>{
-
         if(res.data()){
-
           setDetalle({id:res.id, ...res.data()})
-
         }else{
-
           setInvalid(true)
-
         }
-
       })
-
       .catch((error)=> console.log(error))
-
       .finally(()=> setCargando(false))
-
     },[id])
 
-
-   // useEffect(() => {
-     //   getOneProduct(id)
-       //     .then(res => setDetalle(res))
-         //   .catch((error) => console.log(error))
-   // }, [id])
-
    if(invalid){
-
-    return <div>
-
-      <h1> El producto no existe! </h1>
-
-      <Link className='btn btn-primary' to='/'>Volver a home</Link>
-
-    </div>
-
+    return (
+      <div className='container my-5 text-center'>
+        <div className='alert alert-warning' role='alert'>
+            <h2>¡Producto no encontrado!</h2>
+            <p>El producto que buscas no existe o fue eliminado.</p>
+        </div>
+        <Link className='btn btn-primary' to='/'>Volver al inicio</Link>
+      </div>
+    )
+  }
+  
+  if(cargando){
+    return (
+        <div className='container my-5 text-center'>
+            <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Cargando...</span>
+            </div>
+            <p className='mt-2'>Cargando detalles del producto...</p>
+        </div>
+    )
   }
 
     return (

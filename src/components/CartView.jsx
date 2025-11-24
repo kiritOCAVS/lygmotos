@@ -1,15 +1,19 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
+import CartItem from './CartItem'
 
 const CartView = () => {
-    const { cart, removeFromCart, clearCart, getTotalPrice } = useContext(CartContext)
+    const { cart, removeFromCart, clearCart, getTotalPrice, getCartQuantity } = useContext(CartContext)
 
     if(cart.length === 0){
         return (
-            <div className="container my-5">
-                <h2>Tu carrito está vacío</h2>
-                <Link className='btn btn-primary mt-3' to='/'>Volver a la tienda</Link>
+            <div className="container my-5 text-center">
+                <div className="alert alert-info" role="alert">
+                    <h2>Tu carrito está vacío</h2>
+                    <p className="mb-0">¡Agrega productos para comenzar tu compra!</p>
+                </div>
+                <Link className='btn btn-primary mt-3' to='/'>Ir a la tienda</Link>
             </div>
         )
     }
@@ -17,38 +21,15 @@ const CartView = () => {
     return (
         <div className="container my-5">
             <h2 className="text-primary mb-4">Carrito de Compras</h2>
+            <p className="text-muted">Total de productos: {getCartQuantity()} unidades</p>
             
             <div className="row">
                 {cart.map((item) => (
-                    <div key={item.id} className="col-12 mb-3">
-                        <div className="card">
-                            <div className="card-body d-flex justify-content-between align-items-center">
-                                <div className="d-flex align-items-center">
-                                    <img 
-                                        src={item.img} 
-                                        alt={item.name} 
-                                        style={{width: '80px', height: '80px', objectFit: 'cover'}}
-                                        className="me-3"
-                                    />
-                                    <div>
-                                        <h5 className="card-title mb-1">{item.name}</h5>
-                                        <p className="card-text mb-0">
-                                            Cantidad: {item.quantity} | Precio: ${item.price}
-                                        </p>
-                                        <p className="card-text">
-                                            Subtotal: ${item.price * item.quantity}
-                                        </p>
-                                    </div>
-                                </div>
-                                <button 
-                                    className="btn btn-danger"
-                                    onClick={() => removeFromCart(item.id)}
-                                >
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <CartItem 
+                        key={item.id} 
+                        item={item} 
+                        removeFromCart={removeFromCart}
+                    />
                 ))}
             </div>
 
